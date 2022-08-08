@@ -75,12 +75,14 @@ function onUpdateCar(carId){
 }
 
 function onReadCar(carId){
+    // debugger
     var car = getCarById(carId)
-    var elModal = document.querySelector('.modal')
+    var elModal = document.querySelector('.modal1')
     elModal.querySelector('h3').innerText = car.vendor
     elModal.querySelector('h4 span').innerText = car.maxSpeed
     elModal.querySelector('p').innerText = car.desc
     elModal.classList.add('open')
+    console.log('elModal',elModal)
 }
 
 function onSetFilterBy(filterBy){
@@ -89,7 +91,7 @@ function onSetFilterBy(filterBy){
 }
 
 function onCloseModal(){
-    document.querySelector('.modal').classList.remove('open')
+    document.querySelector('.modal1').classList.remove('open')
     // renderCars()
 }
 function flashMsg(msg){
