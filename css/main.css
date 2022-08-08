@@ -7,6 +7,7 @@ body{
     height: 100vh;
     flex-direction: column;
     justify-content: center;
+    height: 98vh;
 }
 
 .car-filter{
@@ -21,10 +22,8 @@ body{
 }
 .cars-container{
     display: flex;
-    /* background-color:darkgray; */
-    height: 90%;
+    /* height: 90%; */
     justify-content: center;
-    /* width: 80%; */
     align-items: center;
     gap: 5px;
     flex-wrap: wrap;
@@ -49,6 +48,11 @@ body{
 .car-preview .btn-remove{
     float: right;
 }
+
+.curr-page{
+    background-color: lightpink;
+}
+
 button{
     width: 150;
     background-color: rgb(179, 125, 179);

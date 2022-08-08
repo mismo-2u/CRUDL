@@ -6,8 +6,9 @@ function onInit(){
     renderVendors()
 }
 
-function onNextPage(){
-    nextPage()
+function onNextPage(pageNum){
+    setPageIdx(pageNum)
+    // nextPage()
     renderCars()
 }
 
@@ -17,13 +18,28 @@ function renderCars(){
         <article class="car-preview">
             <button class="btn-remove" onclick="onDeleteCar('${car.id}')">x</button>
             <h5>${car.vendor}</h5>
-            <h6>Up To <span>${car.maxSpeed}</span>KMH</h6>
+            <h6>Up To <span><br>${car.maxSpeed}</span>KMH</h6>
             <img onerror="this.src='img/fiat.png'" src="img/${car.vendor}.png" alt="car by vendor"><br><hr>
             <button onclick="onReadCar('${car.id}')">Details</button>
             <button onclick="onUpdateCar('${car.id}')">Update</button>
         </article>
     `)
     document.querySelector('.cars-container').innerHTML = strHTMLs.join('')
+    renderPagesCount()
+}
+
+function renderPagesCount(){
+    var numOfPages = getInfoOnPages()
+    var strHTML = ''
+    if(numOfPages === 0) strHTML = '<h1>No Cars To Present</h1>'
+    else{
+        for(var i=0;i<numOfPages;i++){
+            strHTML += `<button type="button" class="curr-page${i} btn btn-light" onclick="onNextPage(${i})">${i+1}</button>`
+        }
+    }
+    var elPages = document.querySelector('.pages')
+    elPages.innerHTML = strHTML
+
 }
 
 function renderVendors(){

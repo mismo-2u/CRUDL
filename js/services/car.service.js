@@ -5,6 +5,7 @@ const PAGE_SIZE = 5
 const gVendors = ['audi', 'fiat', 'suzuki', 'honda']
 
 var gCars
+var gCurrCars
 var gFilterBy = {vendor:'', minSpeed:0}
 var gPageIdx = 0
 
@@ -19,12 +20,22 @@ function getVendors(){
     return gVendors
 }
 
+function getInfoOnPages(){
+    var numOfPages = Math.ceil(gCurrCars.length/PAGE_SIZE)
+    return numOfPages
+}
+
 function getCars(){
     var cars = gCars.filter(car => car.vendor.includes(gFilterBy.vendor) && 
         car.maxSpeed >= gFilterBy.minSpeed)
+    gCurrCars = cars
     const startIdx = gPageIdx * PAGE_SIZE
     cars = cars.slice(startIdx, startIdx + PAGE_SIZE)
     return cars
+}
+
+function setPageIdx(pageNum){
+    gPageIdx = pageNum
 }
 
 function deleteCar(carId){
